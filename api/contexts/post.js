@@ -105,7 +105,7 @@ module.exports = class {
 
                         result.push({
                             like_path: createXPathFromElement(like_element),
-                            like_path: createXPathFromElement(dislike_element),
+                            dislike_path: createXPathFromElement(dislike_element),
                         })
                     }
 
