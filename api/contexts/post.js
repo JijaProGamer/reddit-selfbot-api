@@ -100,12 +100,12 @@ module.exports = class {
 
                     for(let raw_comment of raw_comments){
                         let vote_element = searchChildByClass(raw_comment, `midcol`)
-                        let like_element = searchChildByClass(vote_element, `up`)
-                        let dislike_element = searchChildByClass(vote_element, `down`)
+                        let upvote_element = searchChildByClass(vote_element, `up`)
+                        let downvote_element = searchChildByClass(vote_element, `down`)
 
                         result.push({
-                            like_path: createXPathFromElement(like_element),
-                            dislike_path: createXPathFromElement(dislike_element),
+                            upvote_path: createXPathFromElement(upvote_element),
+                            downvote_path: createXPathFromElement(downvote_element),
                         })
                     }
 
