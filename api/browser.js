@@ -144,21 +144,21 @@ module.exports = class {
 
             if (url.startsWith("data:image")) return request.continue();
 
-            if (url.includes("accounts.google.com"))
-              return route(usableProxy, request);
-
             if (request.method() == "POST") return route(usableProxy, request);
+            if ((url.includes(".mp4") || url.includes("DASH_")) && this.#extra.saveBandwidth)
+              return route("abort", request);
 
             let isDocument =
               type == "document" ||
               type == "script" ||
               type == "manifest" ||
               type == "stylesheet";
-            if (url.includes("ip=") || url.includes("myip"))
+
+            if (url.includes("ip="))
               return route(usableProxy, request);
 
             if (request.method() == "GET") {
-              if (bannedResourceTypes.includes(type))
+              if (bannedResourceTypes.includes(type) && this.#extra.saveBandwidth)
                 return route("abort", request);
 
               if (isDocument && type == "document")

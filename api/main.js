@@ -47,6 +47,7 @@ module.exports = class {
         this.#extra = {
             proxy: proxy || "direct://",
             timeout: typeof opts.timeout == "number" ? opts.timeout : 30000,
+            saveBandwidth: opts.saveBandwidth,
             fingerprint: opts.fingerprint
         }
 
